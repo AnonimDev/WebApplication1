@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Data.interfaces;
+using WebApplication1.ViewModels;
 
 namespace WebApplication1.Controllers
 {
@@ -20,8 +21,11 @@ namespace WebApplication1.Controllers
 
         public ViewResult List()
         {
-            var cars = _allCars.Cars;
-            return View(cars);
+            ViewBag.Title = "Страница с автомобилями";
+            CarsListViewModel obj = new CarsListViewModel();
+            obj.allCars = _allCars.Cars;
+            obj.currCategory = "Автомобили";
+            return View(obj);
         }
     }
 }
